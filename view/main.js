@@ -8,11 +8,10 @@ var id = null;
 var state = null;
 
 function repaint() {
+    $("#change_id").text(id === null ? "Set ID" : "Change ID");
     if(!state)
         return;
     console.log(state);
-    console.log(id);
-    $("#change_id").text(id === null ? "Set ID" : "Change ID");
     $("#dice").toggle(state.code === WAIT_TO_ROLL && state.nowPlaying === id);
 }
 function disable_control() {
@@ -25,6 +24,13 @@ socket = io(); // connect
 socket.on("update", function(newState) {
     state = newState;
     repaint();
+});
+socket.on("disconnect", function () {
+    console.log("disconnected");
+    state = null;
+    id = null;
+    repaint();
+    disable_control();
 });
 
 $("#change_id").click(function () {
