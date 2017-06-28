@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>2017 CSIE camp Monopoly!</title>
+    <link type="text/css" rel="stylesheet" href="main.css">
+  </head>
+  <body>
+    <div id="control">
+      <label for="player_id">Player ID:</label>
+      <input id="player_id" type="number" min="0" max="4" value="0" required>
+      <button type="button" id="change_id">Set ID</button>
+      <button type="button" id="dice" hidden>Roll</button>
+    </div>
+    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
